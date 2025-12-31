@@ -1,0 +1,973 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Ayesha - My Heartfelt Thanks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f9f0ff, #e6f0ff);
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 80px 20px;
+            position: relative;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        .page.active {
+            display: block;
+            opacity: 1;
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Page 1 - Welcome */
+        .welcome-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 80vh;
+        }
+        
+        .title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            color: #e91e63;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #6a11cb;
+            margin-bottom: 40px;
+            max-width: 800px;
+            line-height: 1.6;
+        }
+        
+        .start-btn {
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(106, 17, 203, 0.3);
+            margin-top: 30px;
+        }
+        
+        .start-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(106, 17, 203, 0.4);
+        }
+        
+        /* Floating Hearts Animation */
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .heart {
+            position: absolute;
+            color: #ff4081;
+            font-size: 24px;
+            opacity: 0.7;
+            animation: floatUp 15s linear infinite;
+        }
+        
+        /* Page 2 - Thank You */
+        .thank-you-page {
+            text-align: center;
+        }
+        
+        .message-box {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            margin: 0 auto 50px;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #ffccd5;
+        }
+        
+        .message-box:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: linear-gradient(90deg, #ff6b8b, #ffcc00, #6a11cb);
+        }
+        
+        .message-title {
+            color: #e91e63;
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .message-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        
+        .highlight {
+            color: #6a11cb;
+            font-weight: 600;
+        }
+        
+        .emoji {
+            font-size: 1.5rem;
+            margin: 0 5px;
+        }
+        
+        .next-btn {
+            background: linear-gradient(45deg, #ff6b8b, #ffcc00);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            box-shadow: 0 8px 20px rgba(255, 107, 139, 0.3);
+        }
+        
+        .next-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Page 3 - Sorry */
+        .sorry-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .sorry-container {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+        
+        .sorry-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            width: 300px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-top: 8px solid #ff6b8b;
+        }
+        
+        .sorry-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .sorry-icon {
+            font-size: 3rem;
+            color: #ff6b8b;
+            margin-bottom: 20px;
+        }
+        
+        .sorry-title {
+            color: #e91e63;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .sorry-text {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Page 4 - Importance */
+        .importance-page {
+            text-align: center;
+        }
+        
+        .importance-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .importance-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .importance-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .importance-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #6a11cb, #2575fc);
+        }
+        
+        .importance-icon {
+            font-size: 3.5rem;
+            color: #6a11cb;
+            margin-bottom: 20px;
+        }
+        
+        .importance-title {
+            color: #e91e63;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Page 5 - Cake Ceremony */
+        .cake-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .cake-container {
+            position: relative;
+            margin: 40px 0;
+        }
+        
+        .cake {
+            width: 300px;
+            height: 200px;
+            position: relative;
+            margin: 0 auto;
+        }
+        
+        .cake-layer {
+            position: absolute;
+            border-radius: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .layer-bottom {
+            width: 250px;
+            height: 80px;
+            background: linear-gradient(45deg, #ffccd5, #ff8fab);
+            bottom: 0;
+            z-index: 1;
+        }
+        
+        .layer-middle {
+            width: 200px;
+            height: 70px;
+            background: linear-gradient(45deg, #ffb3c6, #ff758f);
+            bottom: 70px;
+            z-index: 2;
+        }
+        
+        .layer-top {
+            width: 150px;
+            height: 60px;
+            background: linear-gradient(45deg, #ff8fab, #ff477e);
+            bottom: 130px;
+            z-index: 3;
+        }
+        
+        .candle {
+            position: absolute;
+            width: 10px;
+            height: 40px;
+            background: #ffcc00;
+            border-radius: 5px;
+            bottom: 190px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 4;
+        }
+        
+        .flame {
+            position: absolute;
+            width: 20px;
+            height: 30px;
+            background: #ff9900;
+            border-radius: 50% 50% 20% 20%;
+            bottom: 230px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            animation: flicker 0.5s infinite alternate;
+        }
+        
+        .cake-message {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 800px;
+            margin: 40px auto;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            border: 2px solid #ffccd5;
+        }
+        
+        .cut-cake-btn {
+            background: linear-gradient(45deg, #ff6b8b, #ffcc00);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            box-shadow: 0 10px 25px rgba(255, 107, 139, 0.4);
+        }
+        
+        .cut-cake-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Page 6 - Final Message */
+        .final-page {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        .final-message {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 3px solid #ffccd5;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .final-message:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path fill="%23ffccd5" opacity="0.1" d="M50,0 Q100,0 100,50 Q100,100 50,100 Q0,100 0,50 Q0,0 50,0 Z"/></svg>');
+            background-size: 100px;
+            z-index: -1;
+        }
+        
+        .final-title {
+            color: #e91e63;
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .final-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 30px;
+        }
+        
+        .restart-btn {
+            background: linear-gradient(45deg, #6a11cb, #2575fc);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            box-shadow: 0 10px 25px rgba(106, 17, 203, 0.4);
+        }
+        
+        .restart-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Navigation Dots */
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+        
+        .dot {
+            width: 15px;
+            height: 15px;
+            background: #ccc;
+            border-radius: 50%;
+            margin: 15px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .dot.active {
+            background: #e91e63;
+            transform: scale(1.3);
+        }
+        
+        /* Music Icon */
+        .music-icon {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 107, 139, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            z-index: 1000;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
+        
+        .music-icon:hover {
+            background: #e91e63;
+            transform: scale(1.1);
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes floatUp {
+            0% { 
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.7; }
+            100% { 
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes flicker {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.1); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .title { font-size: 3rem; }
+            .subtitle { font-size: 1.2rem; }
+            .message-title { font-size: 2.2rem; }
+            .message-text { font-size: 1.1rem; }
+            .final-title { font-size: 2.5rem; }
+            .final-text { font-size: 1.2rem; }
+            .nav-dots { right: 15px; }
+            .music-icon {
+                bottom: 20px;
+                left: 20px;
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title { font-size: 2.5rem; }
+            .subtitle { font-size: 1rem; }
+            .message-box, .final-message { padding: 25px; }
+            .cake { width: 250px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Music Icon -->
+    <div class="music-icon" id="musicIcon">
+        <i class="fas fa-music"></i>
+    </div>
+    
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="dot active" data-page="1"></div>
+        <div class="dot" data-page="2"></div>
+        <div class="dot" data-page="3"></div>
+        <div class="dot" data-page="4"></div>
+        <div class="dot" data-page="5"></div>
+        <div class="dot" data-page="6"></div>
+    </div>
+
+    <!-- Floating Hearts -->
+    <div class="floating-hearts" id="heartsContainer"></div>
+
+    <!-- Page 1: Welcome -->
+    <section class="page active" id="page1">
+        <div class="container welcome-container">
+            <h1 class="title fade-in">For My Dearest Ayesha</h1>
+            <p class="subtitle fade-in">A special website just for you, with all the things I want to say but sometimes find hard to express in words.</p>
+            <button class="start-btn fade-in" onclick="nextPage()">
+                Open My Heart <i class="fas fa-heart"></i>
+            </button>
+            <p style="margin-top: 30px; color: #e91e63; font-style: italic;">
+                <i class="fas fa-music"></i> Special music is playing for you...
+            </p>
+        </div>
+    </section>
+
+    <!-- Page 2: Thank You -->
+    <section class="page" id="page2">
+        <div class="container thank-you-page">
+            <div class="message-box fade-in">
+                <h2 class="message-title">Thank You For 2025</h2>
+                <p class="message-text">
+                    Ayesha, I want to thank you from the bottom of my heart for everything in 2025 
+                    <span class="emoji">💖</span>. Thank you for listening to me, for understanding me, 
+                    for being there when I needed someone the most.
+                </p>
+                <p class="message-text">
+                    You have no idea how much it means to me that you take the time to 
+                    <span class="highlight">listen to what I have to say</span>, 
+                    <span class="highlight">understand my feelings</span>, and 
+                    <span class="highlight">be patient with me</span> even when I'm being difficult.
+                </p>
+                <p class="message-text">
+                    I know I don't always express it well, but your presence in my life has made everything better. 
+                    You've been my comfort, my confidante, and my safe space.
+                </p>
+            </div>
+            <button class="next-btn" onclick="nextPage()">
+                Continue to My Apology <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Page 3: Sorry -->
+    <section class="page" id="page3">
+        <div class="container sorry-page">
+            <h2 class="message-title fade-in">I'm Sorry</h2>
+            <p class="subtitle fade-in">For all the times I messed up and hurt you</p>
+            
+            <div class="sorry-container">
+                <div class="sorry-card fade-in">
+                    <div class="sorry-icon">
+                        <i class="fas fa-angry"></i>
+                    </div>
+                    <h3 class="sorry-title">For Getting Angry</h3>
+                    <p class="sorry-text">
+                        I'm so sorry for getting angry with you over small things. 
+                        I know it hurts you, and I hate that I do that.
+                    </p>
+                </div>
+                
+                <div class="sorry-card fade-in">
+                    <div class="sorry-icon">
+                        <i class="fas fa-fist-raised"></i>
+                    </div>
+                    <h3 class="sorry-title">For Fighting</h3>
+                    <p class="sorry-text">
+                        I'm sorry for picking fights and arguments. 
+                        Sometimes my childishness takes over, and I don't think before I speak.
+                    </p>
+                </div>
+                
+                <div class="sorry-card fade-in">
+                    <div class="sorry-icon">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3 class="sorry-title">For Being Childish</h3>
+                    <p class="sorry-text">
+                        Yes, I admit it - I still have a lot of childishness in me. 
+                        I'm working on growing up, but sometimes I slip back into old habits.
+                    </p>
+                </div>
+            </div>
+            
+            <button class="next-btn" onclick="nextPage()">
+                Why You Mean So Much <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Page 4: Importance -->
+    <section class="page" id="page4">
+        <div class="container importance-page">
+            <h2 class="message-title fade-in">You Are My Everything</h2>
+            <p class="subtitle fade-in">This is why you're the most important person in my life</p>
+            
+            <div class="importance-container">
+                <div class="importance-card fade-in">
+                    <div class="importance-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="importance-title">I Hide Nothing From You</h3>
+                    <p class="sorry-text">
+                        I can't hide anything from you. Everything in my heart and mind, 
+                        I end up sharing with you. You're the only person I can be completely transparent with.
+                    </p>
+                </div>
+                
+                <div class="importance-card fade-in">
+                    <div class="importance-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3 class="importance-title">Most Important Presence</h3>
+                    <p class="sorry-text">
+                        More than anything else in this world, your presence matters to me. 
+                        Just knowing you're there makes everything okay.
+                    </p>
+                </div>
+                
+                <div class="importance-card fade-in">
+                    <div class="importance-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="importance-title">I'll Always Wait For You</h3>
+                    <p class="sorry-text">
+                        Even when you're angry with me, I'll wait for you. 
+                        Because my heart only feels at peace when I'm talking to you, 
+                        when I'm with you.
+                    </p>
+                </div>
+            </div>
+            
+            <button class="next-btn" onclick="nextPage()">
+                Let's Celebrate! <i class="fas fa-birthday-cake"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Page 5: Cake Ceremony -->
+    <section class="page" id="page5">
+        <div class="container cake-page">
+            <h2 class="message-title fade-in">Let's Start 2026 Together!</h2>
+            <p class="subtitle fade-in">A virtual cake cutting ceremony for our new beginning</p>
+            
+            <div class="cake-container fade-in">
+                <div class="cake">
+                    <div class="cake-layer layer-bottom"></div>
+                    <div class="cake-layer layer-middle"></div>
+                    <div class="cake-layer layer-top"></div>
+                    <div class="candle"></div>
+                    <div class="flame" id="flame"></div>
+                </div>
+            </div>
+            
+            <div class="cake-message fade-in">
+                <p class="message-text">
+                    Ayesha, I want to start the upcoming year with you by my side. 
+                    I want to live all these beautiful moments with you again - the laughs, 
+                    the conversations, the shared silences, everything.
+                </p>
+                <p class="message-text">
+                    Just like cutting this cake symbolizes a sweet beginning, 
+                    I want to start 2026 with you, creating new memories and cherishing old ones.
+                </p>
+            </div>
+            
+            <button class="cut-cake-btn" onclick="cutCake()" id="cutCakeBtn">
+                Cut the Cake Together! <i class="fas fa-utensils"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Page 6: Final Message -->
+    <section class="page" id="page6">
+        <div class="container final-page">
+            <div class="final-message fade-in">
+                <h2 class="final-title">My Promise to You</h2>
+                <p class="final-text">
+                    Ayesha, you are the most important person in my life. 
+                    More important than anything else. I know I have my flaws - 
+                    the anger, the childishness, the arguments - but I promise I'm working on being better.
+                </p>
+                <p class="final-text">
+                    I want to thank you again for 2025 - for every moment, every conversation, 
+                    every bit of understanding you showed me. And I want to ask you for 2026 - 
+                    let's make it even more beautiful together.
+                </p>
+                <p class="final-text">
+                    No matter what happens, I'll always be here for you. 
+                    Even when you're angry with me, I'll wait. Because my heart only finds its home with you.
+                </p>
+                <p class="final-text" style="font-family: 'Dancing Script', cursive; font-size: 2rem; color: #e91e63; margin-top: 30px;">
+                    With all my love and gratitude,
+                    <br>Always yours
+                </p>
+            </div>
+            
+            <button class="restart-btn" onclick="goToPage(1)">
+                Read Again <i class="fas fa-redo"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Audio Element - Romantic Music -->
+    <audio id="backgroundMusic" loop autoplay>
+        <source src="https://assets.mixkit.co/music/preview/mixkit-a-very-happy-christmas-897.mp3" type="audio/mpeg">
+        <source src="https://assets.mixkit.co/music/preview/mixkit-a-very-happy-christmas-897.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Celebration Audio -->
+    <audio id="celebrationSound">
+        <source src="https://assets.mixkit.co/sfx/preview/mixkit-happy-crowd-laugh-464.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Create floating hearts
+        function createHearts() {
+            const container = document.getElementById('heartsContainer');
+            for (let i = 0; i < 25; i++) {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.innerHTML = '❤';
+                heart.style.left = `${Math.random() * 100}%`;
+                heart.style.fontSize = `${Math.random() * 20 + 15}px`;
+                heart.style.animationDelay = `${Math.random() * 15}s`;
+                heart.style.opacity = `${Math.random() * 0.5 + 0.3}`;
+                container.appendChild(heart);
+            }
+        }
+        
+        // Music control
+        const audio = document.getElementById('backgroundMusic');
+        const musicIcon = document.getElementById('musicIcon');
+        let isPlaying = true;
+        
+        // Try to play music automatically
+        window.addEventListener('load', function() {
+            audio.volume = 0.5; // Set volume to 50%
+            
+            // Try to play audio
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Audio started playing
+                    console.log("Music is playing automatically");
+                }).catch(error => {
+                    // Auto-play was prevented, show message
+                    console.log("Auto-play prevented. Click the music icon to play.");
+                    musicIcon.innerHTML = '<i class="fas fa-play"></i>';
+                    isPlaying = false;
+                });
+            }
+        });
+        
+        // Toggle music on icon click
+        musicIcon.addEventListener('click', function() {
+            if (isPlaying) {
+                audio.pause();
+                musicIcon.innerHTML = '<i class="fas fa-play"></i>';
+                isPlaying = false;
+            } else {
+                audio.play();
+                musicIcon.innerHTML = '<i class="fas fa-music"></i>';
+                isPlaying = true;
+            }
+        });
+        
+        // Page navigation system
+        let currentPage = 1;
+        const totalPages = 6;
+        
+        function goToPage(pageNum) {
+            // Validate page number
+            if (pageNum < 1) pageNum = 1;
+            if (pageNum > totalPages) pageNum = totalPages;
+            
+            // Remove active class from current page and dot
+            document.getElementById(`page${currentPage}`).classList.remove('active');
+            document.querySelectorAll('.dot')[currentPage - 1].classList.remove('active');
+            
+            // Set new current page
+            currentPage = pageNum;
+            
+            // Add active class to new page and dot
+            document.getElementById(`page${currentPage}`).classList.add('active');
+            document.querySelectorAll('.dot')[currentPage - 1].classList.add('active');
+            
+            // Scroll to top of page
+            window.scrollTo(0, 0);
+            
+            // Add fade-in animation to elements
+            setTimeout(() => {
+                const elements = document.querySelectorAll(`#page${currentPage} .fade-in`);
+                elements.forEach(el => {
+                    el.style.animation = 'none';
+                    setTimeout(() => {
+                        el.style.animation = 'fadeIn 1s ease forwards';
+                    }, 10);
+                });
+            }, 100);
+        }
+        
+        function nextPage() {
+            goToPage(currentPage + 1);
+        }
+        
+        function prevPage() {
+            goToPage(currentPage - 1);
+        }
+        
+        // Cake cutting function
+        function cutCake() {
+            const flame = document.getElementById('flame');
+            const btn = document.getElementById('cutCakeBtn');
+            
+            // Extinguish flame
+            flame.style.opacity = '0';
+            flame.style.transition = 'opacity 1s';
+            
+            // Change button text
+            btn.innerHTML = 'Cake Cut! Now Let\'s Begin 2026 Together! <i class="fas fa-heart"></i>';
+            btn.disabled = true;
+            btn.style.background = 'linear-gradient(45deg, #4CAF50, #8BC34A)';
+            
+            // Play celebration sound
+            const celebrationAudio = document.getElementById('celebrationSound');
+            celebrationAudio.volume = 0.3;
+            celebrationAudio.play().catch(e => console.log("Celebration sound could not play"));
+            
+            // Show confetti effect
+            createConfetti();
+            
+            // Move to next page after delay
+            setTimeout(() => {
+                nextPage();
+            }, 3000);
+        }
+        
+        // Create confetti effect
+        function createConfetti() {
+            const colors = ['#e91e63', '#6a11cb', '#2575fc', '#ffcc00', '#4CAF50'];
+            const container = document.getElementById('heartsContainer');
+            
+            for (let i = 0; i < 80; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('heart');
+                confetti.innerHTML = ['❤', '✨', '🎉', '🎊', '🥳'][Math.floor(Math.random() * 5)];
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.fontSize = `${Math.random() * 20 + 10}px`;
+                confetti.style.color = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.animation = `floatUp ${Math.random() * 3 + 2}s linear forwards`;
+                confetti.style.animationDelay = '0s';
+                container.appendChild(confetti);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    if (confetti.parentNode) {
+                        confetti.remove();
+                    }
+                }, 5000);
+            }
+        }
+        
+        // Navigation dots click events
+        document.querySelectorAll('.dot').forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                goToPage(index + 1);
+            });
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                nextPage();
+            }
+            if (e.key === 'ArrowLeft') {
+                prevPage();
+            }
+        });
+        
+        // Initialize
+        window.onload = function() {
+            createHearts();
+            
+            // Add fade-in to initial elements
+            document.querySelectorAll('.fade-in').forEach(el => {
+                el.style.animation = 'fadeIn 1s ease forwards';
+            });
+            
+            // Make sure first page is active
+            goToPage(1);
+        };
+    </script>
+</body>
+</html>
+```
